@@ -2,7 +2,7 @@
 module Arel
   module Nodes
     class DeleteStatement < Arel::Nodes::Binary
-      attr_accessor :limit
+      attr_accessor :limit, :returnings
 
       alias :relation :left
       alias :relation= :left=

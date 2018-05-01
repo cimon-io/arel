@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Arel
   class DeleteManager < Arel::TreeManager
+    attr_accessor :returnings
+
     def initialize
       super
       @ast = Nodes::DeleteStatement.new
