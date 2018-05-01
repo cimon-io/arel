@@ -16,6 +16,7 @@ module Arel
 
       def initialize_copy other
         super
+        @returnings = @returnings.clone if @returnings
         @wheres = @wheres.clone
         @values = @values.clone
       end

@@ -69,6 +69,31 @@ module Arel
         grouping_array_or_grouping_element o, collector
       end
 
+      def visit_Returning_Arel_Nodes_Returning o
+        if o.returnings.empty?
+          ""
+        else
+          " RETURNING #{o.returnings.join(', ')}"
+        end
+      end
+
+      def visit_Arel_Nodes_UpdateStatement o
+        if o.returnings
+          "#{super}#{visit o.returnings}"
+        else
+          super
+        end
+      end
+
+      def visit_Arel_Nodes_DeleteStatement o
+        if o.returnings
+          "#{super}#{visit o.returnings}"
+        else
+          super
+        end
+      end
+
+
       # Utilized by GroupingSet, Cube & RollUp visitors to
       # handle grouping aggregation semantics
       def grouping_array_or_grouping_element o, collector

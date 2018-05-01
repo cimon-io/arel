@@ -35,5 +35,11 @@ module Arel
       @ctx.wheres << expr
       self
     end
+
+    def returning *returnings
+      @ctx.returnings = returnings if !returnings.compact.empty?
+      self
+    end
+
   end
 end

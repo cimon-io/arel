@@ -33,6 +33,7 @@ module Arel
       def initialize_copy other
         super
         @source      = @source.clone if @source
+        @returnings = @returnings.clone if @returnings
         @projections = @projections.clone
         @wheres      = @wheres.clone
         @groups      = @groups.clone

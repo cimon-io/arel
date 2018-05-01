@@ -17,6 +17,7 @@ module Arel
       um.take @ast.limit.expr if @ast.limit
       um.order(*@ast.orders)
       um.wheres = @ctx.wheres
+      um.returning @ctx.returnings if @ctx.returnings
       um
     end
 
